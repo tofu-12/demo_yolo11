@@ -1,0 +1,9 @@
+[project]
+name = "yolo11"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12.7"
+dependencies = [
+    "ultralytics>=8.3.175",
+]
