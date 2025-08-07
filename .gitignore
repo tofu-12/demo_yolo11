@@ -11,3 +11,19 @@ wheels/
 
 # mac
 .DS_Store
+
+# datasets
+datasets/
+
+# runs
+runs/
+
+# results
+*.jpg
+*.json
+
+# model
+*.pt
+
+# .gitignore
+!.gitignore
