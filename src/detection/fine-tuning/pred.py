@@ -5,25 +5,25 @@ from typing import List
 from ultralytics import YOLO
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
-from dataloaders import load_coco8_image_path_list
+from dataloaders import load_homeobjects_val_image_path_list
 from utils import save_result_to_json
 
 
 # 保存先設定
-RESULT_DIR_PATH       = "results/detection/trained"
-RESULT_BOXES_DIR_PATH = "results/detection/trained/boxes"
+RESULT_DIR_PATH       = "results/detection/fine-tuning"
+RESULT_BOXES_DIR_PATH = "results/detection/fine-tuning/boxes"
 
 # 実行デバイス
 DEVICE = "mps"
 
 
-def pred_coco():
-    """ COCO8データセットに対する予測を行うメソッド """
+def pred_homeobjects():
+    """ HomeObjects-3Kデータセットに対する予測を行うメソッド """
     # モデルの読み込み
-    model = YOLO("yolo11n.pt")
+    model = YOLO(os.path.join(RESULT_DIR_PATH, "fine-tuned_model.pt"))
 
-    # COCO8の画像パス
-    image_path_list: List = load_coco8_image_path_list()
+    # HomeObjects-3Kの画像パス
+    image_path_list: List = load_homeobjects_val_image_path_list(num_data=10)
 
     # 物体検出
     results = model.predict(
@@ -48,4 +48,4 @@ def pred_coco():
 
 
 if __name__ == "__main__":
-    pred_coco()
+    pred_homeobjects()

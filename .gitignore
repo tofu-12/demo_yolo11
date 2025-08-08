@@ -20,7 +20,10 @@ runs/
 
 # results
 *.jpg
+*.png
 *.json
+*.csv
+*.yaml
 
 # model
 *.pt
